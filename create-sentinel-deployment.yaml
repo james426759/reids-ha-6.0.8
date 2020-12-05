@@ -28,7 +28,7 @@ spec:
 
       containers:
       - name: redis-ha-cluster-sentinel-c1
-        image: redis-sentinel-ha-cluster:1.0
+        image: james759426/redis-sentinel-ha-cluster:6.0.8
 
         resources:
           requests:
