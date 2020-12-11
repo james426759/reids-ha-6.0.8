@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: redis-ha-cluster-sentinel-d1
 spec:
-  replicas: 3
+  # replicas: 3
   selector:
     matchLabels:
       app: redis-ha-cluster-sentinel-lbl
@@ -42,7 +42,16 @@ spec:
 
         ports:
         - containerPort: 26379
-
+        readinessProbe:
+          tcpSocket:
+            port: 26379
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 26379
+          initialDelaySeconds: 15
+          periodSeconds: 20
         env:
         - name: SENTINEL
           value: "true"
