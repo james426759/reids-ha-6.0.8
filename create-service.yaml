@@ -5,11 +5,8 @@ metadata:
     name: redis-ha-cluster-sentinel-service-lbl
   name: redis-ha-cluster-sentinel-service
 spec:
-  type: NodePort
   ports:
-    - protocol: TCP
-      port: 26379
-      targetPort: 26379
+    - port: 26379
   selector:
     app: redis-ha-cluster-sentinel-lbl
 
